@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+}
+
+.card{
+    width: 150px;
+    height: 150px;
+}
+
+.card_back, .card_front{
+    width: 100px;
+}
+
+.card_front{
+    background-color: aqua;
+}
+
+.card_back{
+    background-color: cadetblue;
+}
