@@ -24,11 +24,11 @@ body{
 }
 
 .card_front{
-    background-color: aqua;
+    background-color: #171c1c;
 }
 
 .card_back{
-    background-color: cadetblue;
-    color:aqua;
+    background-color: #03a9f4;
+    color:#171c1c;
     font-size: 30px;
 }
