@@ -9,7 +9,54 @@ let items = [
     'mongo',
     'node',
     'react',
-], cards = null;
+],
+clickCard = true,
+cards = null,
+cardsTotal = 20,
+cardOne = '',
+cardTwo = '',
+points = 0,
+total = document.getElementById('total'),
+point = document.getElementById('points')
+;
+
+function game(id){
+    if(cardOne === '' && cardTwo === ''){
+        cardOne = id;
+        cardsTotal--;
+        clickCardBool();
+    }else if(cardOne !== '' && cardTwo === ''){
+        cardTwo = id;
+        cardsTotal--;
+        compara();
+        clickCardBool();
+    }
+    statusCard();
+}
+
+function compara(){
+    if(cardOne === cardTwo){
+        points++;
+        cardOne = '',
+        cardTwo = '';
+    }else{
+        cardOne = '',
+        cardTwo = '';
+    }
+
+    if(cardsTotal == 0){
+        endGame();
+    }
+}
+
+function clickCardBool(){
+    clickCard = !clickCard;
+}
+
+function statusCard(){
+    total.innerHTML = cardsTotal;
+    point.innerHTML = points;
+}
 
 const createCards = (items) => {
     let cards = [];
@@ -23,12 +70,12 @@ createPair = (item) => {
         {
             id: `card-${item}-${parseInt(Math.random() * 100)}`,
             icon: item,
-            flipped: false,
+            flip: false,
         },
         {
             id: `card-${item}-${parseInt(Math.random() * 100)}`,
             icon: item,
-            flipped: false,
+            flip: false,
         }
     ];
 },
@@ -43,7 +90,6 @@ randomCards = (cards) => {
         [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]];
     }
 },
-
 cardsToFront = (cards) => {
     let gameBoard = document.querySelector('body div.board');
     cards.forEach((card) => {
@@ -63,23 +109,29 @@ cardsToFront = (cards) => {
         `;
     });
 },
-
-flipCard = () => {
-    const card = document.getElementsByClassName('card');
-
-    for(let i=0 ; i< card.length ; i++){
-        card[i].addEventListener("click", function(e){
-            let element = e.target;
-            element.parentElement.className = 'card flip';
+flipCard = (cards) => {
+    for(let i=0 ; i < cards.length ; i++){
+        let card = document.getElementById(cards[i].id);
+        card.addEventListener("click", function(){
+            if(clickCard && !cards[i].flip){
+                clickCardBool();
+                game(cards[i].icon);
+                cards[i].flip = true;
+                card.className = 'card flip';
+            }
         },false);
     }
 }
-
 startGame = () => {
+    statusCard();
     cards = createCards(items);
     randomCards(cards);
     cardsToFront(cards);
-    flipCard();
+    flipCard(cards);
+},
+endGame = () => {
+    let endgame = document.getElementById('endGame');
+    endgame.removeAttribute('style');
 };
 
 startGame();

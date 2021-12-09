@@ -7,12 +7,34 @@
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.infos{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+#points{
+    display: flex;
+    color: #4caf50;
+}
+
+.cards_total{
+    display: flex;
+    color: #03a9f4;
+}
+
 .board{
-    margin: 20px auto;
+    margin: auto;
     max-width: 700px;
     display: grid;
     gap: 20px;
