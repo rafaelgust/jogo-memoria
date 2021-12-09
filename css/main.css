@@ -13,6 +13,7 @@ body{
     width: 150px;
     height: 150px;
     transform-style: preserve-3d;
+    transition: transform 500ms;
 }
 
 .card_back, .card_front{
@@ -24,7 +25,7 @@ body{
     align-items: center;
     border-radius: 20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0.45);
-    backface-visibility: hidden;
+    backface-visibility: hidden; /*conteudo atrás invisivel*/
 }
 
 .card_front{
@@ -40,4 +41,35 @@ body{
 
 .flip{
     transform: rotateY(180deg);
+}
+
+#endGame{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.205);
+    color: white;
+    font-size: 30px;
+}
+
+#reset{
+    padding: 15px;
+    margin: 10px;
+    font-size: 20px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 500ms linear;
+}
+
+#reset:hover{
+    padding: 20px;
+    background-color: white;
+    color: tomato;
 }
