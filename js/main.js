@@ -1,8 +1,40 @@
-const card = document.getElementsByClassName('card');
+const FRONT = 'card_front', BACK = 'card_back';
 
-for(let i=0 ; i< card.length ; i++){
-    card[i].addEventListener("click", function(e){
-        let element = e.target;
-        element.parentElement.className = 'card flip';
-    },false );
-}
+let items = [
+    'bootstrap',
+    'css',
+    'electron',
+    'firebase',
+    'html',
+    'javascript',
+    'jquery',
+    'mongo',
+    'node',
+    'react',
+];
+
+const createCards = (items) => {
+    let cards = [];
+    for(let item of items){
+        cards.push(createPair(item));
+    }
+    return cards.flatMap(pair => pair);
+},
+
+createPair = (item) => {
+    return [
+        {
+            id: `card-${item}-${parseInt(Math.random() * 100)}`,
+            icon: item,
+            flipped: false,
+        },
+        {
+            id: `card-${item}-${parseInt(Math.random() * 100)}`,
+            icon: item,
+            flipped: false,
+        }
+    ];
+};
+
+console.log(createCards(items));
+
