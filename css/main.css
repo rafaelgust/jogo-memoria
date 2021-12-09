@@ -12,6 +12,7 @@ body{
     position: relative;
     width: 150px;
     height: 150px;
+    transform-style: preserve-3d;
 }
 
 .card_back, .card_front{
@@ -23,14 +24,20 @@ body{
     align-items: center;
     border-radius: 20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0.45);
+    backface-visibility: hidden;
 }
 
 .card_front{
     background-color: #171c1c;
+    transform: rotateY(180deg);
 }
 
 .card_back{
     background-color: #03a9f4;
     color:#171c1c;
     font-size: 30px;
+}
+
+.flip{
+    transform: rotateY(180deg);
 }
