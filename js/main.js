@@ -1,4 +1,3 @@
-const FRONT = 'card_front', BACK = 'card_back';
 let items = [
     'bootstrap',
     'css',
@@ -33,7 +32,6 @@ createPair = (item) => {
         }
     ];
 },
-
 randomCards = (cards) => {
     let currentIndex = cards.length;
     let randomIndex = 0;
@@ -46,10 +44,42 @@ randomCards = (cards) => {
     }
 },
 
+cardsToFront = (cards) => {
+    let gameBoard = document.querySelector('body div.board');
+    cards.forEach((card) => {
+        let cardElement = document.createElement('div');
+        cardElement.id = card.id;
+        cardElement.classList.add('card');
+        cardElement.dataset.icon = card.icon;
+
+        gameBoard.appendChild(cardElement);
+        cardElement.innerHTML = `
+        <div class="card_front">
+            <img src="./img/${card.icon}.png" alt="${card.icon}" class="icon">
+        </div>
+        <div class="card_back">
+            ?
+        </div>
+        `;
+    });
+},
+
+flipCard = () => {
+    const card = document.getElementsByClassName('card');
+
+    for(let i=0 ; i< card.length ; i++){
+        card[i].addEventListener("click", function(e){
+            let element = e.target;
+            element.parentElement.className = 'card flip';
+        },false);
+    }
+}
+
 startGame = () => {
-    let cards = createCards(items);
+    cards = createCards(items);
     randomCards(cards);
-    console.log(cards);
+    cardsToFront(cards);
+    flipCard();
 };
 
 startGame();
