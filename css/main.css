@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body{
@@ -24,6 +25,7 @@ body{
     height: 150px;
     transform-style: preserve-3d;
     transition: transform 500ms;
+    
 }
 
 .card_back, .card_front{
@@ -45,8 +47,16 @@ body{
 
 .card_back{
     background-color: #03a9f4;
-    color:#171c1c;
-    font-size: 30px;
+    color:black;
+    font-size: 40px;
+    transition: all 500ms linear;
+    cursor: pointer;
+}
+
+.card_back:hover{
+    background-color: #1a6283;
+    color:white;
+    font-size: 60px;
 }
 
 .flip{
