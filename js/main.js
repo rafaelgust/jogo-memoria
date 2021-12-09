@@ -20,6 +20,21 @@ total = document.getElementById('total'),
 point = document.getElementById('points')
 ;
 
+function reset(){
+    clickCard = true,
+    cards = null,
+    cardsTotal = 20,
+    cardOne = '',
+    cardTwo = '',
+    points = 0,
+    endgame = document.getElementById('endGame'),
+    gameBoard = document.querySelector('body div.board');
+
+    gameBoard.innerHTML = "";
+    endgame.style.display = "none";
+    startGame();
+}
+
 function game(id){
     if(cardOne === '' && cardTwo === ''){
         cardOne = id;
